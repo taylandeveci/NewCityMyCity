@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
+import { wp, hp, rf } from '../utils/responsive';
 
 interface BottomTabProps {
   state: any;
@@ -79,7 +80,7 @@ export const BottomTab: React.FC<BottomTabProps> = ({ state, descriptors, naviga
                 <View style={styles.iconContainer}>
                   <AntDesign
                     name={getIconName(route.name)}
-                    size={24}
+                    size={rf(24)}
                     color={isFocused ? theme.colors.accent.blue : theme.colors.text.tertiary}
                   />
                 </View>
@@ -110,37 +111,38 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    paddingHorizontal: 16,
+    paddingHorizontal: wp(4),
   },
   blurContainer: {
-    borderRadius: 24,
+    borderRadius: wp(6),
     overflow: 'hidden',
   },
   tabBar: {
     flexDirection: 'row',
-    paddingVertical: 12,
-    paddingHorizontal: 8,
+    paddingVertical: hp(1.5),
+    paddingHorizontal: wp(2),
   },
   tab: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 4,
-    borderRadius: 16,
-    minHeight: 56,
+    paddingVertical: hp(1),
+    paddingHorizontal: wp(1),
+    borderRadius: wp(4),
+    minHeight: hp(7),
   },
   iconContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 28,
-    height: 28,
+    width: wp(7),
+    height: wp(7),
   },
   icon: {
     textAlign: 'center',
   },
   label: {
-    marginTop: 4,
+    marginTop: hp(0.5),
     textAlign: 'center',
+    fontSize: rf(10),
   },
 });

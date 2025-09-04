@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withSequence } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
+import { wp, hp, rf } from '../utils/responsive';
 
 interface GlowingCTAProps {
   title: string;
@@ -25,9 +26,9 @@ export const GlowingCTA: React.FC<GlowingCTAProps> = ({
   const glow = useSharedValue(1);
 
   const sizes = {
-    large: { width: 200, height: 200, fontSize: 18 },
-    medium: { width: 120, height: 120, fontSize: 16 },
-    small: { width: 80, height: 80, fontSize: 14 },
+    large: { width: wp(50), height: wp(50), fontSize: rf(18) },
+    medium: { width: wp(30), height: wp(30), fontSize: rf(16) },
+    small: { width: wp(20), height: wp(20), fontSize: rf(14) },
   };
 
   const currentSize = sizes[size];
@@ -82,8 +83,8 @@ export const GlowingCTA: React.FC<GlowingCTAProps> = ({
         style={[
           styles.glowEffect,
           {
-            width: currentSize.width + 40,
-            height: currentSize.height + 40,
+            width: currentSize.width + wp(10),
+            height: currentSize.height + wp(10),
             borderRadius: (currentSize.width + 40) / 2,
             backgroundColor: theme.colors.glow.accent,
           },
@@ -137,6 +138,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: wp(4),
   },
 });

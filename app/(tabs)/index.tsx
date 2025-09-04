@@ -18,6 +18,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { GlowingCTA } from '../../components/GlowingCTA';
 import { MapPreviewCard } from '../../components/MapPreviewCard';
+import { wp, hp, rf, deviceValue, isTablet } from '../../utils/responsive';
 import { InfoCard } from '../../components/InfoCard';
 import { FilterChip } from '../../components/FilterChip';
 import { PromoCard } from '../../components/PromoCard';
@@ -323,63 +324,71 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   header: {
-    paddingHorizontal: 16,
-    marginBottom: 24,
+    paddingHorizontal: wp(4),
+    marginBottom: hp(3),
   },
   headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: hp(2),
   },
   profilePill: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    paddingHorizontal: wp(4),
+    paddingVertical: hp(1),
+    borderRadius: wp(5),
   },
-  profileText: {},
+  profileText: {
+    fontSize: rf(14),
+  },
   pointsPill: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    paddingHorizontal: wp(4),
+    paddingVertical: hp(1),
+    borderRadius: wp(5),
     borderWidth: 1,
   },
-  pointsText: {},
+  pointsText: {
+    fontSize: rf(14),
+  },
   greeting: {
-    marginBottom: 8,
-    lineHeight: 36,
+    marginBottom: hp(1),
+    lineHeight: rf(36),
+    fontSize: rf(28),
   },
   subGreeting: {
-    lineHeight: 22,
+    lineHeight: rf(22),
+    fontSize: rf(16),
   },
   ctaContainer: {
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: hp(3),
   },
   section: {
-    marginVertical: 16,
+    marginVertical: hp(2),
   },
   sectionTitle: {
-    marginHorizontal: 16,
-    marginBottom: 12,
+    marginHorizontal: wp(4),
+    marginBottom: hp(1.5),
+    fontSize: rf(18),
   },
   filterRow: {
-    paddingHorizontal: 16,
+    paddingHorizontal: wp(4),
   },
   weeklyActivity: {
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: hp(3),
   },
   weeklyTitle: {
-    marginBottom: 8,
+    marginBottom: hp(1),
+    fontSize: rf(16),
   },
   weeklyDots: {
     flexDirection: 'row',
-    gap: 8,
+    gap: wp(2),
   },
   weeklyDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    width: wp(2),
+    height: wp(2),
+    borderRadius: wp(1),
   },
 });

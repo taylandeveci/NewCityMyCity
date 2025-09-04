@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
+import { wp, hp, rf } from '../utils/responsive';
 
 interface InfoCardProps {
   title: string;
@@ -71,7 +72,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
       >
         <Feather
           name={icon}
-          size={24}
+          size={rf(24)}
           color={iconColor}
         />
       </Animated.View>
@@ -106,7 +107,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
       
       <Feather
         name="chevron-right"
-        size={20}
+        size={rf(20)}
         color={theme.colors.text.tertiary}
       />
     </AnimatedTouchableOpacity>
@@ -117,26 +118,28 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 16,
-    borderRadius: 16,
-    marginVertical: 4,
-    marginHorizontal: 16,
+    padding: wp(4),
+    borderRadius: wp(4),
+    marginVertical: hp(0.5),
+    marginHorizontal: wp(4),
   },
   iconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(3),
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 12,
+    marginRight: wp(3),
   },
   content: {
     flex: 1,
   },
   title: {
-    marginBottom: 2,
+    marginBottom: hp(0.25),
+    fontSize: rf(16),
   },
   subtitle: {
-    lineHeight: 18,
+    lineHeight: rf(18),
+    fontSize: rf(14),
   },
 });

@@ -1,9 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, Image, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withSequence } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
-import { StatusPill } from './StatusPill';
 import { useTheme } from '../theme/provider';
+import { StatusPill } from './StatusPill';
+import { wp, hp, rf } from '../utils/responsive';
 import { Complaint } from '../data/mock';
 
 interface ComplaintCardProps {
@@ -155,16 +157,16 @@ export const ComplaintCard: React.FC<ComplaintCardProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderRadius: 16,
-    padding: 16,
-    marginVertical: 6,
-    marginHorizontal: 16,
+    borderRadius: wp(4),
+    padding: wp(4),
+    marginVertical: hp(0.75),
+    marginHorizontal: wp(4),
   },
   thumbnail: {
-    width: 60,
-    height: 60,
-    borderRadius: 12,
-    marginRight: 12,
+    width: wp(15),
+    height: wp(15),
+    borderRadius: wp(3),
+    marginRight: wp(3),
   },
   content: {
     flex: 1,
@@ -173,31 +175,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 8,
+    marginBottom: hp(1),
   },
   title: {
     flex: 1,
-    marginRight: 8,
-    lineHeight: 22,
+    marginRight: wp(2),
+    lineHeight: rf(22),
+    fontSize: rf(16),
   },
   address: {
-    marginBottom: 8,
-    lineHeight: 18,
+    marginBottom: hp(1),
+    lineHeight: rf(18),
+    fontSize: rf(14),
   },
   footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 8,
+    marginBottom: hp(1),
   },
-  date: {},
-  reference: {},
+  date: {
+    fontSize: rf(12),
+  },
+  reference: {
+    fontSize: rf(12),
+  },
   progressBarContainer: {
-    height: 3,
-    borderRadius: 2,
+    height: hp(0.4),
+    borderRadius: wp(0.5),
     overflow: 'hidden',
   },
   progressBar: {
     height: '100%',
-    borderRadius: 2,
+    borderRadius: wp(0.5),
   },
 });
