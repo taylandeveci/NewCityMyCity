@@ -2,11 +2,11 @@ import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { AntDesign } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
 import { wp, hp, rf } from '../utils/responsive';
+import { BulletproofIcon } from './BulletproofIcon';
 
 interface BottomTabProps {
   state: any;
@@ -20,16 +20,16 @@ export const BottomTab: React.FC<BottomTabProps> = ({ state, descriptors, naviga
   const theme = useTheme();
   const insets = useSafeAreaInsets();
 
-  const getIconName = (routeName: string): keyof typeof AntDesign.glyphMap => {
+  const getIconName = (routeName: string): string => {
     switch (routeName) {
       case 'index':
         return 'home';
       case 'map':
-        return 'enviromento';
+        return 'map';
       case 'reports':
-        return 'filetext1';
+        return 'reports';
       case 'community':
-        return 'team';
+        return 'community';
       default:
         return 'home';
     }
@@ -78,7 +78,7 @@ export const BottomTab: React.FC<BottomTabProps> = ({ state, descriptors, naviga
                 onPress={() => handleTabPress(route, isFocused)}
               >
                 <View style={styles.iconContainer}>
-                  <AntDesign
+                  <BulletproofIcon
                     name={getIconName(route.name)}
                     size={rf(24)}
                     color={isFocused ? theme.colors.accent.blue : theme.colors.text.tertiary}

@@ -193,7 +193,7 @@ export default function Home() {
           <InfoCard
             title="My Reports"
             subtitle="Track your submitted complaints"
-            icon="file-text"
+            icon="reports"
             onPress={() => router.push('/reports')}
             color={theme.colors.accent.blue}
           />
@@ -201,7 +201,7 @@ export default function Home() {
           <InfoCard
             title="Nearby Issues"
             subtitle="See what's happening around you"
-            icon="map-pin"
+            icon="location"
             onPress={() => router.push('/map')}
             color={theme.colors.status.inReview}
           />
@@ -209,7 +209,7 @@ export default function Home() {
           <InfoCard
             title="Join a Club"
             subtitle="Connect with community groups"
-            icon="users"
+            icon="community"
             onPress={() => router.push('/community')}
             color={theme.colors.status.resolved}
           />

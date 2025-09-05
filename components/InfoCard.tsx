@@ -1,15 +1,15 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
 import { wp, hp, rf } from '../utils/responsive';
+import { BulletproofIcon } from './BulletproofIcon';
 
 interface InfoCardProps {
   title: string;
   subtitle?: string;
-  icon: keyof typeof Feather.glyphMap;
+  icon: string;
   onPress: () => void;
   color?: string;
 }
@@ -70,7 +70,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
           },
         ]}
       >
-        <Feather
+        <BulletproofIcon
           name={icon}
           size={rf(24)}
           color={iconColor}
@@ -105,8 +105,8 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         )}
       </Animated.View>
       
-      <Feather
-        name="chevron-right"
+      <BulletproofIcon
+        name="forward"
         size={rf(20)}
         color={theme.colors.text.tertiary}
       />
