@@ -2,11 +2,11 @@ import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
 import { wp, hp, rf } from '../utils/responsive';
-import { BulletproofIcon } from './BulletproofIcon';
 
 interface BottomTabProps {
   state: any;
@@ -20,18 +20,18 @@ export const BottomTab: React.FC<BottomTabProps> = ({ state, descriptors, naviga
   const theme = useTheme();
   const insets = useSafeAreaInsets();
 
-  const getIconName = (routeName: string): string => {
+  const getIconName = (routeName: string): keyof typeof Ionicons.glyphMap => {
     switch (routeName) {
       case 'index':
-        return 'home';
+        return 'home-outline';
       case 'map':
-        return 'map';
+        return 'map-outline';
       case 'reports':
-        return 'reports';
+        return 'document-text-outline';
       case 'community':
-        return 'community';
+        return 'people-outline';
       default:
-        return 'home';
+        return 'home-outline';
     }
   };
 
@@ -78,7 +78,7 @@ export const BottomTab: React.FC<BottomTabProps> = ({ state, descriptors, naviga
                 onPress={() => handleTabPress(route, isFocused)}
               >
                 <View style={styles.iconContainer}>
-                  <BulletproofIcon
+                  <Ionicons
                     name={getIconName(route.name)}
                     size={rf(24)}
                     color={isFocused ? theme.colors.accent.blue : theme.colors.text.tertiary}

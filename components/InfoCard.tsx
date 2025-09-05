@@ -1,15 +1,15 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
 import { wp, hp, rf } from '../utils/responsive';
-import { BulletproofIcon } from './BulletproofIcon';
 
 interface InfoCardProps {
   title: string;
   subtitle?: string;
-  icon: string;
+  icon: keyof typeof Ionicons.glyphMap;
   onPress: () => void;
   color?: string;
 }
@@ -70,7 +70,7 @@ export const InfoCard: React.FC<InfoCardProps> = ({
           },
         ]}
       >
-        <BulletproofIcon
+        <Ionicons
           name={icon}
           size={rf(24)}
           color={iconColor}
@@ -105,8 +105,8 @@ export const InfoCard: React.FC<InfoCardProps> = ({
         )}
       </Animated.View>
       
-      <BulletproofIcon
-        name="forward"
+      <Ionicons
+        name="chevron-forward-outline"
         size={rf(20)}
         color={theme.colors.text.tertiary}
       />
