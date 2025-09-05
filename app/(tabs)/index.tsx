@@ -129,7 +129,7 @@ export default function Home() {
                   },
                 ]}
               >
-                {user.points} Points
+                {user.points} Puan
               </Text>
             </View>
           </View>
@@ -144,7 +144,7 @@ export default function Home() {
               },
             ]}
           >
-            How can we improve your city today?
+            Bugün şehrinizi nasıl geliştirebiliriz?
           </Text>
           
           <Text
@@ -156,14 +156,14 @@ export default function Home() {
               },
             ]}
           >
-            Report issues, track progress, join your community
+            Sorunları bildirin, ilerlemeyi takip edin, topluluğunuza katılın
           </Text>
         </Animated.View>
 
         {/* Main CTA */}
         <View style={styles.ctaContainer}>
           <GlowingCTA
-            title="Report Issue"
+            title="Sorun Bildir"
             onPress={() => router.push('/complaint/new')}
           />
         </View>
@@ -171,8 +171,8 @@ export default function Home() {
         {/* Map Preview */}
         <MapPreviewCard
           onPress={() => router.push('/map')}
-          title="Explore Map"
-          subtitle="See all reports in your area"
+          title="Haritayı Keşfet"
+          subtitle="Bölgenizdeki tüm raporları görün"
         />
 
         {/* Quick Actions */}
@@ -187,28 +187,28 @@ export default function Home() {
               },
             ]}
           >
-            Quick Actions
+            Hızlı İşlemler
           </Text>
           
           <InfoCard
-            title="My Reports"
-            subtitle="Track your submitted complaints"
+            title="Raporlarım"
+            subtitle="Gönderdiğiniz şikayetleri takip edin"
             icon="document-text-outline"
             onPress={() => router.push('/reports')}
             color={theme.colors.accent.blue}
           />
           
           <InfoCard
-            title="Nearby Issues"
-            subtitle="See what's happening around you"
+            title="Yakındaki Sorunlar"
+            subtitle="Çevrenizde neler olduğunu görün"
             icon="location-outline"
             onPress={() => router.push('/map')}
             color={theme.colors.status.inReview}
           />
           
           <InfoCard
-            title="Join a Club"
-            subtitle="Connect with community groups"
+            title="Kulübe Katıl"
+            subtitle="Topluluk gruplarıyla bağlantı kurun"
             icon="people-outline"
             onPress={() => router.push('/community')}
             color={theme.colors.status.resolved}
@@ -227,7 +227,7 @@ export default function Home() {
               },
             ]}
           >
-            Browse by Category
+            Kategoriye Göre Gözat
           </Text>
           
           <ScrollView
@@ -248,9 +248,9 @@ export default function Home() {
 
         {/* Promo Card */}
         <PromoCard
-          title="Clean Beach Week"
-          description="Join the city-wide initiative to keep our beaches clean and beautiful"
-          ctaText="Learn More"
+          title="Temiz Sahil Haftası"
+          description="Sahillerimizi temiz ve güzel tutmak için şehir çapındaki girişime katılın"
+          ctaText="Daha Fazla Bilgi"
           onPress={() => {}}
           gradientColors={[theme.colors.status.resolved, theme.colors.accent.blue]}
         />
@@ -267,7 +267,7 @@ export default function Home() {
               },
             ]}
           >
-            {selectedCategory === 'all' ? 'Recent Reports' : `Recent ${categories.find(c => c.id === selectedCategory)?.name} Reports`}
+            {selectedCategory === 'all' ? 'Son Raporlar' : `Son ${categories.find(c => c.id === selectedCategory)?.name} Raporları`}
           </Text>
           
           {filteredComplaints.map((complaint) => (
@@ -290,7 +290,7 @@ export default function Home() {
               },
             ]}
           >
-            This week's activity
+            Bu haftanın aktivitesi
           </Text>
           <View style={styles.weeklyDots}>
             {Array.from({ length: 7 }).map((_, index) => (

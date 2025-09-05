@@ -110,7 +110,7 @@ export default function NewComplaint() {
             },
           ]}
         >
-          {address || 'Select location on map'}
+          {address || 'Haritadan konum seçin'}
         </Text>
         <Feather
           name="chevron-right"
@@ -134,9 +134,9 @@ export default function NewComplaint() {
   const handleSubmit = () => {
     if (!selectedCategory || !title.trim() || !description.trim() || !address) {
       Alert.alert(
-        'Missing Information',
-        'Please fill in all required fields and select a location.',
-        [{ text: 'OK' }]
+        'Eksik Bilgi',
+        'Lütfen tüm gerekli alanları doldurun ve bir konum seçin.',
+        [{ text: 'Tamam' }]
       );
       return;
     }
@@ -145,8 +145,8 @@ export default function NewComplaint() {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     
     Alert.alert(
-      'Report Submitted Successfully',
-      'Your complaint has been submitted and will be reviewed shortly. Reference number: CTC-2024-' + String(Math.floor(Math.random() * 1000)).padStart(3, '0'),
+      'Rapor Başarıyla Gönderildi',
+      'Şikayetiniz gönderildi ve kısa sürede incelenecek. Referans numarası: CTC-2024-' + String(Math.floor(Math.random() * 1000)).padStart(3, '0'),
       [
         {
           text: 'OK',
@@ -178,7 +178,7 @@ export default function NewComplaint() {
             },
           ]}
         >
-          Report Issue
+          Sorun Bildir
         </Text>
         <View style={{ width: 44 }} />
       </View>
@@ -213,7 +213,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              Category *
+              Kategori *
             </Text>
             <Text
               style={[
@@ -224,7 +224,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              What type of issue are you reporting?
+              Ne tür bir sorun bildiriyorsunuz?
             </Text>
             
             <View style={styles.categoryGrid}>
@@ -251,7 +251,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              Title *
+              Başlık *
             </Text>
             <TextInput
               style={[
@@ -263,7 +263,7 @@ export default function NewComplaint() {
                   fontSize: theme.typography.body.medium.fontSize,
                 },
               ]}
-              placeholder="Brief description of the issue"
+              placeholder="Sorunun kısa açıklaması"
               placeholderTextColor={theme.colors.text.tertiary}
               value={title}
               onChangeText={setTitle}
@@ -283,7 +283,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              Location *
+              Konum *
             </Text>
             <AddressSelector />
           </View>
@@ -300,7 +300,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              Photos
+              Fotoğraflar
             </Text>
             <Text
               style={[
@@ -311,7 +311,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              Add photos to help illustrate the issue
+              Sorunu göstermek için fotoğraf ekleyin
             </Text>
             
             <ImagePickerGrid
@@ -334,7 +334,7 @@ export default function NewComplaint() {
                 },
               ]}
             >
-              Description *
+              Açıklama *
             </Text>
             <TextInput
               style={[
@@ -346,7 +346,7 @@ export default function NewComplaint() {
                   fontSize: theme.typography.body.medium.fontSize,
                 },
               ]}
-              placeholder="Provide detailed information about the issue, including when it occurred and any relevant context"
+              placeholder="Sorun hakkında detaylı bilgi verin, ne zaman oluştuğu ve ilgili bağlamı da dahil edin"
               placeholderTextColor={theme.colors.text.tertiary}
               value={description}
               onChangeText={setDescription}
@@ -381,7 +381,7 @@ export default function NewComplaint() {
         ]}
       >
         <GlowingCTA
-          title="Submit Report"
+          title="Raporu Gönder"
           onPress={handleSubmit}
           size="medium"
           variant={isFormValid ? 'primary' : 'secondary'}

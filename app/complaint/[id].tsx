@@ -32,7 +32,7 @@ export default function ComplaintDetail() {
   if (!complaint) {
     return (
       <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-        <Text style={{ color: theme.colors.text.primary }}>Complaint not found</Text>
+        <Text style={{ color: theme.colors.text.primary }}>Şikayet bulunamadı</Text>
       </View>
     );
   }
@@ -157,7 +157,7 @@ export default function ComplaintDetail() {
                 },
               ]}
             >
-              Reference: {complaint.referenceNumber}
+                            Reference: {complaint.referenceNumber}
             </Text>
           </View>
 
@@ -197,7 +197,7 @@ export default function ComplaintDetail() {
                   },
                 ]}
               >
-                Submitted {formatDate(complaint.createdAt)}
+                Gönderildi {formatDate(complaint.createdAt)}
               </Text>
             </View>
 

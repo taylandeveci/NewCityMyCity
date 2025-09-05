@@ -27,9 +27,9 @@ export default function Community() {
   const [refreshing, setRefreshing] = useState(false);
 
   const tabs = [
-    { id: 'institutions', name: 'Institutions' },
-    { id: 'clubs', name: 'Clubs' },
-    { id: 'friends', name: 'Friends' },
+    { id: 'institutions', name: 'Kurumlar' },
+    { id: 'clubs', name: 'Kulüpler' },
+    { id: 'friends', name: 'Arkadaşlar' },
   ];
 
   const onRefresh = async () => {

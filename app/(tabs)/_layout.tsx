@@ -13,7 +13,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: 'Ana Sayfa',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="home" size={size} color={color} />
           ),
@@ -22,7 +22,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="map"
         options={{
-          title: 'Map',
+          title: 'Harita',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="enviromento" size={size} color={color} />
           ),
@@ -31,7 +31,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="reports"
         options={{
-          title: 'Reports',
+          title: 'Raporlar',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="filetext1" size={size} color={color} />
           ),
@@ -40,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="community"
         options={{
-          title: 'Community',
+          title: 'Topluluk',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="team" size={size} color={color} />
           ),

@@ -23,16 +23,16 @@ export default function Reports() {
   const [refreshing, setRefreshing] = useState(false);
 
   const tabs = [
-    { id: 'my', name: 'My Reports' },
-    { id: 'nearby', name: 'Nearby' },
-    { id: 'citywide', name: 'Citywide' },
+    { id: 'my', name: 'Raporlarım' },
+    { id: 'nearby', name: 'Yakındaki' },
+    { id: 'citywide', name: 'Şehir Geneli' },
   ];
 
   const statuses = [
-    { id: 'all', name: 'All Status' },
-    { id: 'awaiting', name: 'Awaiting' },
-    { id: 'inReview', name: 'In Review' },
-    { id: 'resolved', name: 'Resolved' },
+    { id: 'all', name: 'Tüm Durumlar' },
+    { id: 'awaiting', name: 'Bekliyor' },
+    { id: 'inReview', name: 'İnceleniyor' },
+    { id: 'resolved', name: 'Çözüldü' },
   ];
 
   const onRefresh = async () => {
@@ -91,7 +91,7 @@ export default function Reports() {
               },
             ]}
           >
-            Reports
+            Raporlar
           </Text>
           
           <Text

@@ -14,31 +14,31 @@ export const StatusPill: React.FC<StatusPillProps> = ({ status }) => {
     switch (status) {
       case 'awaiting':
         return {
-          text: 'Awaiting',
+          text: 'Bekliyor',
           backgroundColor: theme.colors.status.awaiting + '20',
           color: theme.colors.status.awaiting,
         };
       case 'inReview':
         return {
-          text: 'In Review',
+          text: 'İnceleniyor',
           backgroundColor: theme.colors.status.inReview + '20',
           color: theme.colors.status.inReview,
         };
       case 'resolved':
         return {
-          text: 'Resolved',
+          text: 'Çözüldü',
           backgroundColor: theme.colors.status.resolved + '20',
           color: theme.colors.status.resolved,
         };
       case 'rejected':
         return {
-          text: 'Rejected',
+          text: 'Reddedildi',
           backgroundColor: theme.colors.status.rejected + '20',
           color: theme.colors.status.rejected,
         };
       default:
         return {
-          text: 'Unknown',
+          text: 'Bilinmiyor',
           backgroundColor: theme.colors.surface.secondary,
           color: theme.colors.text.tertiary,
         };
