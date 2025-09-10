@@ -29,7 +29,7 @@ export const BottomTab: React.FC<BottomTabProps> = ({ state, descriptors, naviga
       case 'reports':
         return 'document-text-outline';
       case 'community':
-        return 'people-outline';
+        return 'person-outline';
       default:
         return 'home-outline';
     }

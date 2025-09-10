@@ -6,6 +6,8 @@ import {
   View,
   Dimensions,
   RefreshControl,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -87,28 +89,21 @@ export default function Home() {
         {/* Header */}
         <Animated.View style={[styles.header, headerStyle]}>
           <View style={styles.headerRow}>
-            <View
+            <TouchableOpacity
               style={[
-                styles.profilePill,
+                styles.profileButton,
                 {
                   backgroundColor: theme.colors.surface.primary,
                   ...theme.shadows.md,
                 },
               ]}
+              onPress={() => router.push('/(tabs)/community')}
             >
-              <Text
-                style={[
-                  styles.profileText,
-                  {
-                    color: theme.colors.text.primary,
-                    fontSize: theme.typography.body.small.fontSize,
-                    fontWeight: '600',
-                  },
-                ]}
-              >
-                {user.useAlias ? user.alias : user.name}
-              </Text>
-            </View>
+              <Image
+                source={{ uri: user.avatar }}
+                style={styles.profileAvatar}
+              />
+            </TouchableOpacity>
             
             <View
               style={[
@@ -390,5 +385,14 @@ const styles = StyleSheet.create({
     width: wp(2),
     height: wp(2),
     borderRadius: wp(1),
+  },
+  profileButton: {
+    padding: wp(2),
+    borderRadius: wp(8),
+  },
+  profileAvatar: {
+    width: wp(10),
+    height: wp(10),
+    borderRadius: wp(5),
   },
 });

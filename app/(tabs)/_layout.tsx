@@ -40,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="community"
         options={{
-          title: 'Topluluk',
+          title: 'Profil',
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="team" size={size} color={color} />
           ),
