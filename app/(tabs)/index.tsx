@@ -21,12 +21,10 @@ import Animated, {
 import { GlowingCTA } from '../../components/GlowingCTA';
 import { MapPreviewCard } from '../../components/MapPreviewCard';
 import { wp, hp, rf, deviceValue, isTablet } from '../../utils/responsive';
-import { InfoCard } from '../../components/InfoCard';
-import { FilterChip } from '../../components/FilterChip';
 import { PromoCard } from '../../components/PromoCard';
 import { ComplaintCard } from '../../components/ComplaintCard';
 import { useTheme } from '../../theme/provider';
-import { user, categories, complaints } from '../../data/mock';
+import { user, complaints } from '../../data/mock';
 
 const { width, height } = Dimensions.get('window');
 const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
@@ -34,7 +32,6 @@ const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 export default function Home() {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [refreshing, setRefreshing] = useState(false);
 
   const scrollY = useSharedValue(0);
@@ -63,9 +60,7 @@ export default function Home() {
     }, 1000);
   };
 
-  const filteredComplaints = selectedCategory === 'all' 
-    ? complaints.slice(0, 3)
-    : complaints.filter(c => c.category === selectedCategory).slice(0, 3);
+  const recentComplaints = complaints.slice(0, 3);
 
   return (
     <View style={styles.container}>
@@ -97,7 +92,7 @@ export default function Home() {
                   ...theme.shadows.md,
                 },
               ]}
-              onPress={() => router.push('/(tabs)/community')}
+              onPress={() => router.push('/(tabs)/profile')}
             >
               <Image
                 source={{ uri: user.avatar }}
@@ -170,77 +165,6 @@ export default function Home() {
           subtitle="Bölgenizdeki tüm raporları görün"
         />
 
-        {/* Quick Actions */}
-        <View style={styles.section}>
-          <Text
-            style={[
-              styles.sectionTitle,
-              {
-                color: theme.colors.text.primary,
-                fontSize: theme.typography.heading.h4.fontSize,
-                fontWeight: theme.typography.heading.h4.fontWeight,
-              },
-            ]}
-          >
-            Hızlı İşlemler
-          </Text>
-          
-          <InfoCard
-            title="Raporlarım"
-            subtitle="Gönderdiğiniz şikayetleri takip edin"
-            icon="document-text-outline"
-            onPress={() => router.push('/reports')}
-            color={theme.colors.accent.blue}
-          />
-          
-          <InfoCard
-            title="Yakındaki Sorunlar"
-            subtitle="Çevrenizde neler olduğunu görün"
-            icon="location-outline"
-            onPress={() => router.push('/map')}
-            color={theme.colors.status.inReview}
-          />
-          
-          <InfoCard
-            title="Kulübe Katıl"
-            subtitle="Topluluk gruplarıyla bağlantı kurun"
-            icon="people-outline"
-            onPress={() => router.push('/community')}
-            color={theme.colors.status.resolved}
-          />
-        </View>
-
-        {/* Filters */}
-        <View style={styles.section}>
-          <Text
-            style={[
-              styles.sectionTitle,
-              {
-                color: theme.colors.text.primary,
-                fontSize: theme.typography.heading.h4.fontSize,
-                fontWeight: theme.typography.heading.h4.fontWeight,
-              },
-            ]}
-          >
-            Kategoriye Göre Gözat
-          </Text>
-          
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.filterRow}
-          >
-            {categories.map((category) => (
-              <FilterChip
-                key={category.id}
-                title={category.name}
-                isSelected={selectedCategory === category.id}
-                onPress={() => setSelectedCategory(category.id)}
-              />
-            ))}
-          </ScrollView>
-        </View>
-
         {/* Promo Card */}
         <PromoCard
           title="Temiz Sahil Haftası"
@@ -262,10 +186,10 @@ export default function Home() {
               },
             ]}
           >
-            {selectedCategory === 'all' ? 'Son Raporlar' : `Son ${categories.find(c => c.id === selectedCategory)?.name} Raporları`}
+            Son Raporlar
           </Text>
           
-          {filteredComplaints.map((complaint) => (
+          {recentComplaints.map((complaint) => (
             <ComplaintCard
               key={complaint.id}
               complaint={complaint}
@@ -365,9 +289,6 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(4),
     marginBottom: hp(1.5),
     fontSize: rf(18),
-  },
-  filterRow: {
-    paddingHorizontal: wp(4),
   },
   weeklyActivity: {
     alignItems: 'center',
