@@ -63,11 +63,13 @@ export default function Home() {
   const recentComplaints = complaints.slice(0, 3);
 
   const StatCard = ({ 
-    label 
+    label,
+    onPress
   }: {
     label: string;
+    onPress: () => void;
   }) => (
-    <View
+    <TouchableOpacity
       style={[
         styles.statCard,
         {
@@ -75,20 +77,21 @@ export default function Home() {
           ...theme.shadows.sm,
         },
       ]}
+      onPress={onPress}
     >
       <Text
         style={[
           styles.statLabel,
           {
             color: theme.colors.text.primary,
-            fontSize: theme.typography.heading.h3.fontSize,
-            fontWeight: theme.typography.heading.h3.fontWeight,
+            fontSize: theme.typography.body.small.fontSize,
+            fontWeight: '500',
           },
         ]}
       >
         {label}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -194,12 +197,15 @@ export default function Home() {
         <View style={styles.statsRow}>
           <StatCard
             label="Selfie"
+            onPress={() => router.push('/selfie')}
           />
           <StatCard
             label="Kurumlar"
+            onPress={() => router.push('/kurumlar')}
           />
           <StatCard
             label="Şikayetlerim"
+            onPress={() => router.push('/sikayetlerim')}
           />
         </View>
 
@@ -361,9 +367,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: wp(4),
-    borderRadius: 16,
-    minHeight: hp(8),
+    padding: wp(3),
+    borderRadius: 12,
+    minHeight: hp(6),
   },
   statLabel: {
     textAlign: 'center',
