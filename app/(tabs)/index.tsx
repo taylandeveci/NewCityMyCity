@@ -63,13 +63,9 @@ export default function Home() {
   const recentComplaints = complaints.slice(0, 3);
 
   const StatCard = ({ 
-    label, 
-    value, 
-    icon 
+    label 
   }: {
     label: string;
-    value: string | number;
-    icon: string;
   }) => (
     <View
       style={[
@@ -80,36 +76,13 @@ export default function Home() {
         },
       ]}
     >
-      <View 
-        style={[
-          styles.statIconContainer,
-          { backgroundColor: theme.colors.accent.blue + '20' }
-        ]}
-      >
-        <Ionicons
-          name={icon as any}
-          size={rf(24)}
-          color={theme.colors.accent.blue}
-        />
-      </View>
-      <Text
-        style={[
-          styles.statValue,
-          {
-            color: theme.colors.text.primary,
-            fontSize: theme.typography.heading.h3.fontSize,
-            fontWeight: theme.typography.heading.h3.fontWeight,
-          },
-        ]}
-      >
-        {value}
-      </Text>
       <Text
         style={[
           styles.statLabel,
           {
-            color: theme.colors.text.tertiary,
-            fontSize: theme.typography.body.small.fontSize,
+            color: theme.colors.text.primary,
+            fontSize: theme.typography.heading.h3.fontSize,
+            fontWeight: theme.typography.heading.h3.fontWeight,
           },
         ]}
       >
@@ -214,22 +187,19 @@ export default function Home() {
           subtitle="Bölgenizdeki tüm raporları görün"
         />
 
+        {/* Spacer between Map and Stats */}
+        <View style={styles.spacer} />
+
         {/* Stats Row */}
         <View style={styles.statsRow}>
           <StatCard
             label="Selfie"
-            value="12"
-            icon="camera-outline"
           />
           <StatCard
             label="Kurumlar"
-            value="8"
-            icon="business-outline"
           />
           <StatCard
             label="Şikayetlerim"
-            value={user.reportCount}
-            icon="document-text-outline"
           />
         </View>
 
@@ -384,22 +354,16 @@ const styles = StyleSheet.create({
     marginBottom: hp(3),
     gap: wp(3),
   },
+  spacer: {
+    height: hp(3),
+  },
   statCard: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     padding: wp(4),
     borderRadius: 16,
-  },
-  statIconContainer: {
-    width: wp(12),
-    height: wp(12),
-    borderRadius: wp(6),
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: hp(1),
-  },
-  statValue: {
-    marginBottom: hp(0.5),
+    minHeight: hp(8),
   },
   statLabel: {
     textAlign: 'center',
