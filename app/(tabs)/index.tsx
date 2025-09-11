@@ -122,31 +122,6 @@ export default function Home() {
               </Text>
             </View>
           </View>
-          
-          <Text
-            style={[
-              styles.greeting,
-              {
-                color: theme.colors.text.primary,
-                fontSize: theme.typography.heading.h2.fontSize,
-                fontWeight: theme.typography.heading.h2.fontWeight,
-              },
-            ]}
-          >
-            Bugün şehrinizi nasıl geliştirebiliriz?
-          </Text>
-          
-          <Text
-            style={[
-              styles.subGreeting,
-              {
-                color: theme.colors.text.tertiary,
-                fontSize: theme.typography.body.medium.fontSize,
-              },
-            ]}
-          >
-            Sorunları bildirin, ilerlemeyi takip edin, topluluğunuza katılın
-          </Text>
         </Animated.View>
 
         {/* Main CTA */}
@@ -155,6 +130,21 @@ export default function Home() {
             title="Sorun Bildir"
             onPress={() => router.push('/complaint/new')}
           />
+          
+          <Text
+            style={[
+              styles.greeting,
+              {
+                color: theme.colors.text.primary,
+                fontSize: theme.typography.heading.h2.fontSize,
+                fontWeight: theme.typography.heading.h2.fontWeight,
+                marginTop: hp(2),
+                textAlign: 'center',
+              },
+            ]}
+          >
+            Bugün şehrinizi nasıl geliştirebiliriz?
+          </Text>
         </View>
 
         {/* Map Preview */}
@@ -263,10 +253,6 @@ const styles = StyleSheet.create({
     marginBottom: hp(1),
     lineHeight: rf(36),
     fontSize: rf(28),
-  },
-  subGreeting: {
-    lineHeight: rf(22),
-    fontSize: rf(16),
   },
   ctaContainer: {
     alignItems: 'center',
