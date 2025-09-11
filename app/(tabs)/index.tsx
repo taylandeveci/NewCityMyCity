@@ -129,8 +129,12 @@ export default function Home() {
           <GlowingCTA
             title="Sorun Bildir"
             onPress={() => router.push('/complaint/new')}
+            size="medium"
           />
-          
+        </View>
+
+        {/* Motivational Text */}
+        <View style={styles.motivationContainer}>
           <Text
             style={[
               styles.greeting,
@@ -138,8 +142,7 @@ export default function Home() {
                 color: theme.colors.text.primary,
                 fontSize: theme.typography.heading.h2.fontSize,
                 fontWeight: theme.typography.heading.h2.fontWeight,
-                marginTop: hp(2),
-                textAlign: 'center',
+                textAlign: 'left',
               },
             ]}
           >
@@ -256,7 +259,12 @@ const styles = StyleSheet.create({
   },
   ctaContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     marginVertical: hp(3.5),
+  },
+  motivationContainer: {
+    paddingHorizontal: wp(4),
+    marginBottom: hp(3),
   },
   section: {
     marginVertical: hp(2.5),
