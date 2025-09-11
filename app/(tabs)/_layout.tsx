@@ -42,7 +42,7 @@ export default function TabLayout() {
         options={{
           title: 'Profil',
           tabBarIcon: ({ color, size }) => (
-            <AntDesign name="team" size={size} color={color} />
+            <AntDesign name="user" size={size} color={color} />
           ),
         }}
       />
