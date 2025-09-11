@@ -129,7 +129,7 @@ export default function Home() {
           <GlowingCTA
             title="Sorun Bildir"
             onPress={() => router.push('/complaint/new')}
-            size="large"
+            size="custom"
           />
         </View>
 
@@ -260,13 +260,12 @@ const styles = StyleSheet.create({
   ctaContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: hp(5),
-    paddingVertical: hp(2),
-    flex: 0,
+    marginVertical: hp(6),
+    paddingVertical: hp(1),
   },
   motivationContainer: {
     paddingHorizontal: wp(4),
-    marginBottom: hp(3),
+    marginBottom: hp(4),
   },
   section: {
     marginVertical: hp(2.5),

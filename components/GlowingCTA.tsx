@@ -9,7 +9,7 @@ import { wp, hp, rf } from '../utils/responsive';
 interface GlowingCTAProps {
   title: string;
   onPress: () => void;
-  size?: 'large' | 'medium' | 'small';
+  size?: 'large' | 'medium' | 'small' | 'custom';
   variant?: 'primary' | 'secondary';
 }
 
@@ -27,6 +27,7 @@ export const GlowingCTA: React.FC<GlowingCTAProps> = ({
 
   const sizes = {
     large: { width: wp(50), height: wp(50), fontSize: rf(18) },
+    custom: { width: wp(37.5), height: wp(37.5), fontSize: rf(16) }, // 75% of large size
     medium: { width: wp(30), height: wp(30), fontSize: rf(16) },
     small: { width: wp(20), height: wp(20), fontSize: rf(14) },
   };
