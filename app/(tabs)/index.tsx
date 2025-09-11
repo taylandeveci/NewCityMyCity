@@ -12,6 +12,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
@@ -60,6 +61,62 @@ export default function Home() {
   };
 
   const recentComplaints = complaints.slice(0, 3);
+
+  const StatCard = ({ 
+    label, 
+    value, 
+    icon 
+  }: {
+    label: string;
+    value: string | number;
+    icon: string;
+  }) => (
+    <View
+      style={[
+        styles.statCard,
+        {
+          backgroundColor: theme.colors.surface.primary,
+          ...theme.shadows.sm,
+        },
+      ]}
+    >
+      <View 
+        style={[
+          styles.statIconContainer,
+          { backgroundColor: theme.colors.accent.blue + '20' }
+        ]}
+      >
+        <Ionicons
+          name={icon as any}
+          size={rf(24)}
+          color={theme.colors.accent.blue}
+        />
+      </View>
+      <Text
+        style={[
+          styles.statValue,
+          {
+            color: theme.colors.text.primary,
+            fontSize: theme.typography.heading.h3.fontSize,
+            fontWeight: theme.typography.heading.h3.fontWeight,
+          },
+        ]}
+      >
+        {value}
+      </Text>
+      <Text
+        style={[
+          styles.statLabel,
+          {
+            color: theme.colors.text.tertiary,
+            fontSize: theme.typography.body.small.fontSize,
+          },
+        ]}
+      >
+        {label}
+      </Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
@@ -156,6 +213,25 @@ export default function Home() {
           title="Haritayı Keşfet"
           subtitle="Bölgenizdeki tüm raporları görün"
         />
+
+        {/* Stats Row */}
+        <View style={styles.statsRow}>
+          <StatCard
+            label="Selfie"
+            value="12"
+            icon="camera-outline"
+          />
+          <StatCard
+            label="Kurumlar"
+            value="8"
+            icon="business-outline"
+          />
+          <StatCard
+            label="Şikayetlerim"
+            value={user.reportCount}
+            icon="document-text-outline"
+          />
+        </View>
 
         {/* Recent Activity */}
         <View style={styles.section}>
@@ -301,5 +377,31 @@ const styles = StyleSheet.create({
     width: wp(10),
     height: wp(10),
     borderRadius: wp(5),
+  },
+  statsRow: {
+    flexDirection: 'row',
+    paddingHorizontal: wp(4),
+    marginBottom: hp(3),
+    gap: wp(3),
+  },
+  statCard: {
+    flex: 1,
+    alignItems: 'center',
+    padding: wp(4),
+    borderRadius: 16,
+  },
+  statIconContainer: {
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(6),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: hp(1),
+  },
+  statValue: {
+    marginBottom: hp(0.5),
+  },
+  statLabel: {
+    textAlign: 'center',
   },
 });
