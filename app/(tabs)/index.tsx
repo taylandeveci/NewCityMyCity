@@ -64,10 +64,12 @@ export default function Home() {
 
   const StatCard = ({ 
     label,
-    onPress
+    onPress,
+    icon
   }: {
     label: string;
     onPress: () => void;
+    icon: string;
   }) => (
     <TouchableOpacity
       style={[
@@ -79,6 +81,18 @@ export default function Home() {
       ]}
       onPress={onPress}
     >
+      <View 
+        style={[
+          styles.statIconContainer,
+          { backgroundColor: theme.colors.accent.blue + '20' }
+        ]}
+      >
+        <Ionicons
+          name={icon as any}
+          size={rf(24)}
+          color={theme.colors.accent.blue}
+        />
+      </View>
       <Text
         style={[
           styles.statLabel,
@@ -198,14 +212,17 @@ export default function Home() {
           <StatCard
             label="Selfie"
             onPress={() => router.push('/selfie')}
+            icon="camera-outline"
           />
           <StatCard
             label="Kurumlar"
             onPress={() => router.push('/kurumlar')}
+            icon="business-outline"
           />
           <StatCard
             label="Şikayetlerim"
             onPress={() => router.push('/sikayetlerim')}
+            icon="document-text-outline"
           />
         </View>
 
@@ -367,9 +384,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: wp(3),
-    borderRadius: 12,
-    minHeight: hp(6),
+    padding: wp(4),
+    borderRadius: 16,
+  },
+  statIconContainer: {
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(6),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: hp(1),
   },
   statLabel: {
     textAlign: 'center',
