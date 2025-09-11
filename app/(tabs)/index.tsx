@@ -21,7 +21,6 @@ import Animated, {
 import { GlowingCTA } from '../../components/GlowingCTA';
 import { MapPreviewCard } from '../../components/MapPreviewCard';
 import { wp, hp, rf, deviceValue, isTablet } from '../../utils/responsive';
-import { PromoCard } from '../../components/PromoCard';
 import { ComplaintCard } from '../../components/ComplaintCard';
 import { useTheme } from '../../theme/provider';
 import { user, complaints } from '../../data/mock';
@@ -165,15 +164,6 @@ export default function Home() {
           subtitle="Bölgenizdeki tüm raporları görün"
         />
 
-        {/* Promo Card */}
-        <PromoCard
-          title="Temiz Sahil Haftası"
-          description="Sahillerimizi temiz ve güzel tutmak için şehir çapındaki girişime katılın"
-          ctaText="Daha Fazla Bilgi"
-          onPress={() => {}}
-          gradientColors={[theme.colors.status.resolved, theme.colors.accent.blue]}
-        />
-
         {/* Recent Activity */}
         <View style={styles.section}>
           <Text
@@ -244,7 +234,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: wp(4),
-    marginBottom: hp(3),
+    marginBottom: hp(3.5),
   },
   headerRow: {
     flexDirection: 'row',
@@ -280,10 +270,10 @@ const styles = StyleSheet.create({
   },
   ctaContainer: {
     alignItems: 'center',
-    marginVertical: hp(3),
+    marginVertical: hp(3.5),
   },
   section: {
-    marginVertical: hp(2),
+    marginVertical: hp(2.5),
   },
   sectionTitle: {
     marginHorizontal: wp(4),
