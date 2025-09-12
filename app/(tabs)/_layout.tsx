@@ -1,12 +1,18 @@
 import { Tabs } from 'expo-router';
 import { AntDesign } from '@expo/vector-icons';
 import { BottomTab } from '../../components/BottomTab';
+import { colors } from '../../theme/tokens';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
+        headerStyle: { backgroundColor: colors.background.primary },
+        headerTitleStyle: { color: colors.text.primary },
+        headerTintColor: colors.text.primary,
+        headerShadowVisible: false,
+        tabBarStyle: { backgroundColor: colors.surface.primary },
       }}
       tabBar={(props) => <BottomTab {...props} />}
     >

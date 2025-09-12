@@ -17,6 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
+import { ScreenContainer } from '../components/layout/ScreenContainer';
 import { wp, hp, rf } from '../utils/responsive';
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
@@ -426,55 +427,17 @@ export default function Kurumlar() {
   );
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer 
+      contentContainerStyle={{
+        paddingHorizontal: wp(4),
+        paddingTop: 0,
+      }}
+    >
       <LinearGradient
         colors={theme.colors.background.gradient}
         style={StyleSheet.absoluteFillObject}
       />
       
-      {/* Header */}
-      <View
-        style={[
-          styles.header,
-          { 
-            paddingTop: insets.top + 16,
-            backgroundColor: 'transparent'
-          }
-        ]}
-      >
-        <TouchableOpacity
-          style={[
-            styles.backButton,
-            {
-              backgroundColor: theme.colors.surface.primary,
-              ...theme.shadows.sm,
-            },
-          ]}
-          onPress={() => router.back()}
-        >
-          <Ionicons
-            name="arrow-back"
-            size={rf(24)}
-            color={theme.colors.text.primary}
-          />
-        </TouchableOpacity>
-        
-        <Text
-          style={[
-            styles.headerTitle,
-            {
-              color: theme.colors.text.primary,
-              fontSize: theme.typography.heading.h2.fontSize,
-              fontWeight: theme.typography.heading.h2.fontWeight,
-            },
-          ]}
-        >
-          Kurumlar
-        </Text>
-        
-        <View style={styles.headerSpacer} />
-      </View>
-
       {/* Search and Filters */}
       <View style={styles.searchContainer}>
         <View
@@ -680,7 +643,7 @@ export default function Kurumlar() {
         onSelect={setSelectedDistrict}
         title="İlçe Seçin"
       />
-    </View>
+    </ScreenContainer>
   );
 }
 
@@ -712,8 +675,8 @@ const styles = StyleSheet.create({
     width: wp(12),
   },
   searchContainer: {
-    paddingHorizontal: wp(4),
-    paddingBottom: hp(2),
+    paddingTop: hp(1),
+    marginBottom: hp(1.5),
   },
   searchInput: {
     flexDirection: 'row',
@@ -722,7 +685,7 @@ const styles = StyleSheet.create({
     paddingVertical: hp(1.5),
     borderRadius: 12,
     borderWidth: 1,
-    marginBottom: hp(2),
+    marginBottom: hp(1.5),
     gap: wp(3),
   },
   textInput: {

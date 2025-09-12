@@ -16,6 +16,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { useTheme } from '../theme/provider';
+import { ScreenContainer } from '../components/layout/ScreenContainer';
 import { wp, hp, rf } from '../utils/responsive';
 
 const { width } = Dimensions.get('window');
@@ -212,52 +213,20 @@ export default function Selfie() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer
+      contentContainerStyle={{
+        paddingHorizontal: wp(4),
+        paddingTop: 0,
+        gap: hp(1.5),
+      }}
+    >
       <LinearGradient
         colors={theme.colors.background.gradient}
         style={StyleSheet.absoluteFillObject}
       />
       
-      {/* Header */}
-      <View
-        style={[
-          styles.header,
-          { 
-            paddingTop: insets.top + 16,
-            backgroundColor: 'transparent'
-          }
-        ]}
-      >
-        <TouchableOpacity
-          style={[
-            styles.backButton,
-            {
-              backgroundColor: theme.colors.surface.primary,
-              ...theme.shadows.sm,
-            },
-          ]}
-          onPress={() => router.back()}
-        >
-          <Ionicons
-            name="arrow-back"
-            size={rf(24)}
-            color={theme.colors.text.primary}
-          />
-        </TouchableOpacity>
-        
-        <Text
-          style={[
-            styles.headerTitle,
-            {
-              color: theme.colors.text.primary,
-              fontSize: theme.typography.heading.h2.fontSize,
-              fontWeight: theme.typography.heading.h2.fontWeight,
-            },
-          ]}
-        >
-          En Beğenilen Selfieler
-        </Text>
-        
+      {/* Add Camera Button */}
+      <View style={styles.headerActions}>
         <TouchableOpacity
           style={[
             styles.addButton,
@@ -275,21 +244,10 @@ export default function Selfie() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={[
-          styles.scrollContent,
-          { paddingBottom: 120 }
-        ]}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      >
-        {mockSelfies.map((selfie) => (
-          <SelfieCard key={selfie.id} selfie={selfie} />
-        ))}
-      </ScrollView>
-    </View>
+      {mockSelfies.map((selfie) => (
+        <SelfieCard key={selfie.id} selfie={selfie} />
+      ))}
+    </ScreenContainer>
   );
 }
 
@@ -324,17 +282,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerActions: {
+    alignItems: 'flex-end',
+    marginBottom: hp(1),
+  },
   scrollView: {
     flex: 1,
   },
   scrollContent: {
     padding: wp(4),
-    gap: hp(2),
+    gap: hp(1.5),
   },
   selfieCard: {
     borderRadius: 16,
     overflow: 'hidden',
-    marginBottom: hp(1),
+    marginBottom: 0,
   },
   selfieImage: {
     width: '100%',
@@ -358,16 +320,16 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   selfieInfo: {
-    padding: wp(4),
+    padding: wp(3),
   },
   selfieUser: {
-    marginBottom: hp(0.5),
+    marginBottom: hp(0.3),
   },
   selfieLocation: {
-    marginBottom: hp(1),
+    marginBottom: hp(0.5),
   },
   selfieCaption: {
-    marginBottom: hp(1),
+    marginBottom: hp(0.5),
     lineHeight: rf(18),
   },
   selfieTime: {},

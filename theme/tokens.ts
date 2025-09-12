@@ -1,22 +1,22 @@
 export const colors = {
-  // Primary blues
+  // Primary blues with #1488ac base
   primary: {
-    900: '#022545',
-    800: '#0A2F5B',
-    700: '#123A71',
-    600: '#1A4487',
-    500: '#224F9D',
-    400: '#2A59B3',
-    300: '#3264C9',
-    200: '#3A6EDF',
-    100: '#4279F5',
+    900: '#0A4B5E',
+    800: '#0E5C74',
+    700: '#126D8A',
+    600: '#1488ac',
+    500: '#1488ac',
+    400: '#2A9CC4',
+    300: '#40B0DA',
+    200: '#56C4F0',
+    100: '#6CD8FF',
   },
   
   // Accent gradient colors
   accent: {
-    blue: '#1D7DFF',
-    purple: '#7A5CFF',
-    gradient: ['#1D7DFF', '#7A5CFF'] as const,
+    blue: '#1488ac',
+    purple: '#2A9CC4',
+    gradient: ['#1488ac', '#2A9CC4'] as const,
   },
   
   // Background gradients
@@ -40,13 +40,13 @@ export const colors = {
     secondary: '#E5E9F2',
     tertiary: '#B8BFC8',
     disabled: '#6B7280',
-    accent: '#1D7DFF',
+    accent: '#1488ac',
   },
   
   // Glow effects
   glow: {
-    primary: 'rgba(187, 212, 255, 0.6)',
-    accent: 'rgba(29, 125, 255, 0.45)',
+    primary: 'rgba(20, 136, 172, 0.6)',
+    accent: 'rgba(20, 136, 172, 0.45)',
     success: 'rgba(52, 211, 153, 0.4)',
     warning: 'rgba(251, 191, 36, 0.4)',
     error: 'rgba(248, 113, 113, 0.4)',
@@ -55,7 +55,7 @@ export const colors = {
   // Status colors
   status: {
     awaiting: '#F59E0B',
-    inReview: '#3B82F6',
+    inReview: '#1488ac',
     resolved: '#10B981',
     rejected: '#EF4444',
   },
@@ -64,7 +64,7 @@ export const colors = {
   success: '#10B981',
   warning: '#F59E0B',
   error: '#EF4444',
-  info: '#3B82F6',
+  info: '#1488ac',
 };
 
 export const spacing = {

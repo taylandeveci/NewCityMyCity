@@ -12,6 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../theme/provider';
+import { ScreenContainer } from '../components/layout/ScreenContainer';
 import { wp, hp, rf } from '../utils/responsive';
 import { ComplaintCard } from '../components/ComplaintCard';
 import { complaints } from '../data/mock';
@@ -120,52 +121,14 @@ export default function Sikayetlerim() {
   const statusCounts = getStatusCounts();
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer scroll={false} style={{ paddingHorizontal: wp(4) }}>
       <LinearGradient
         colors={theme.colors.background.gradient}
         style={StyleSheet.absoluteFillObject}
       />
       
-      {/* Header */}
-      <View
-        style={[
-          styles.header,
-          { 
-            paddingTop: insets.top + 16,
-            backgroundColor: 'transparent'
-          }
-        ]}
-      >
-        <TouchableOpacity
-          style={[
-            styles.backButton,
-            {
-              backgroundColor: theme.colors.surface.primary,
-              ...theme.shadows.sm,
-            },
-          ]}
-          onPress={() => router.back()}
-        >
-          <Ionicons
-            name="arrow-back"
-            size={rf(24)}
-            color={theme.colors.text.primary}
-          />
-        </TouchableOpacity>
-        
-        <Text
-          style={[
-            styles.headerTitle,
-            {
-              color: theme.colors.text.primary,
-              fontSize: theme.typography.heading.h2.fontSize,
-              fontWeight: theme.typography.heading.h2.fontWeight,
-            },
-          ]}
-        >
-          Raporlarım
-        </Text>
-        
+      {/* Add Report Button */}
+      <View style={styles.headerActions}>
         <TouchableOpacity
           style={[
             styles.addButton,
@@ -289,7 +252,7 @@ export default function Sikayetlerim() {
           </>
         )}
       </ScrollView>
-    </View>
+    </ScreenContainer>
   );
 }
 
@@ -324,9 +287,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerActions: {
+    alignItems: 'flex-end',
+    marginBottom: hp(1),
+  },
   filtersScrollView: {
     flexGrow: 0,
-    marginBottom: hp(2),
+    marginBottom: hp(1),
   },
   filtersContainer: {
     paddingHorizontal: wp(4),
